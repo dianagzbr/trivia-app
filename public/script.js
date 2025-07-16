@@ -55,7 +55,9 @@ async function fetchQuestions() {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         questions = await response.json();
-        console.log('Preguntas cargadas:', questions);
+        // Barajar las preguntas
+        questions.sort(() => Math.random() - 0.5);
+        console.log('Preguntas cargadas y barajadas:', questions);
         if (questions.length === 0) {
             alert('No hay preguntas disponibles para esta categoría');
             restartGame();
@@ -170,7 +172,7 @@ function restartGame() {
 }
 
 function shareScore() {
-    const text = `¡"${username}" obtuvo ${score} puntos en el Juego de Trivia! 🎉 Juega en tu-app.up.railway.app`;
+    const text = `¡"${username}" obtuvo ${score} puntos en el Juego de Trivia! 🎉 Juega en https://trivia-app-production-59b5.up.railway.app/`;
     window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`);
 }
 
