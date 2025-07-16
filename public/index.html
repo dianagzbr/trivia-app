@@ -12,9 +12,6 @@
         <label for="username" class="block text-lg font-medium text-gray-700">Ingresa tu nombre:</label>
         <input type="text" id="username" placeholder="Tu nombre" required class="mt-2 w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
         <button onclick="saveUsername()" class="mt-4 w-full bg-green-500 text-white p-3 rounded-lg font-semibold hover:bg-green-600 transition-colors duration-200">Continuar</button>
-        <div id="youtube-link" class="mt-4 text-center">
-            <p class="text-sm text-gray-600">¡Explora más trivias en <a href="https://www.youtube.com/@PlayQuizChallenge" target="_blank" class="text-red-600 font-bold hover:underline">PlayQuizChallenge</a>!</p>
-        </div>
     </div>
 
     <div id="category-selector" class="container bg-white bg-opacity-90 rounded-2xl shadow-xl p-6 max-w-lg w-full transform transition-all duration-300 hover:scale-105 hidden">
@@ -24,7 +21,6 @@
             <option value="Conocimiento General">Conocimiento General</option>
             <option value="Historia">Historia</option>
             <option value="Ciencia">Ciencia</option>
-            <option value="Geografía">Geografía</option>
             <option value="Cultura Pop">Cultura Pop</option>
             <option value="Deportes">Deportes</option>
         </select>
@@ -43,14 +39,26 @@
         <p class="text-gray-700">Puntuación final: <span id="final-score" class="font-bold">0</span></p>
         <p id="user-position" class="text-gray-700 mt-2"></p>
         <h3 class="text-xl font-semibold text-gray-800 mt-4">Ranking</h3>
-        <ul id="leaderboard" class="mt-2 text-gray-700"></ul>
+        <ul id="leaderboard" class="mt-2 text-gray-700 space-y-2"></ul>
         <button onclick="restartGame()" class="mt-4 w-full bg-blue-500 text-white p-3 rounded-lg font-semibold hover:bg-blue-600 transition-colors duration-200">Jugar de nuevo</button>
         <button onclick="shareScore()" class="mt-2 w-full bg-gray-500 text-white p-3 rounded-lg font-semibold hover:bg-gray-600 transition-colors duration-200">Compartir en X</button>
     </div>
 
-    <div id="leaderboard-container" class="container bg-blue-100 bg-opacity-80 rounded-2xl shadow-lg p-6 max-w-lg w-full animate-fade-in">
-        <h3 class="text-xl font-semibold text-gray-800">Ranking</h3>
-        <ul id="leaderboard" class="mt-2 text-gray-700"></ul>
+    <div id="leaderboard-container" class="container bg-blue-100 bg-opacity-90 rounded-2xl shadow-lg p-6 max-w-lg w-full animate-fade-in">
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">Ranking</h3>
+        <ul id="leaderboard" class="text-gray-700 space-y-2"></ul>
+    </div>
+
+    <div id="cloud-resources" class="container max-w-4xl w-full flex flex-wrap justify-center gap-4 py-4">
+        <a href="https://www.youtube.com/@PlayQuizChallenge" target="_blank" class="flex-1 min-w-[150px] bg-red-600 text-white text-center p-4 rounded-lg shadow-md hover:bg-red-700 transition-colors duration-200">
+            <span class="font-semibold">YouTube</span><br>Explora trivias en PlayQuizChallenge
+        </a>
+        <a href="https://drive.google.com/file/d/1O_gSUWL2_Lzol97rvdMTHi--fc-cb5bJ/view?usp=sharing" target="_blank" class="flex-1 min-w-[150px] bg-blue-600 text-white text-center p-4 rounded-lg shadow-md hover:bg-blue-700 transition-colors duration-200">
+            <span class="font-semibold">Google Drive</span><br>Descarga las reglas
+        </a>
+        <a href="https://open.spotify.com/playlist/1L0E4E61knCBSXe9ht31XJ?si=ee6b600071f348cf" target="_blank" class="flex-1 min-w-[150px] bg-green-600 text-white text-center p-4 rounded-lg shadow-md hover:bg-green-700 transition-colors duration-200">
+            <span class="font-semibold">Spotify</span><br>Escucha esta playlist mientras juegas
+        </a>
     </div>
 
     <script src="script.js"></script>

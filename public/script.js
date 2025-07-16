@@ -22,6 +22,7 @@ function saveUsername() {
     document.getElementById('name-selector').style.display = 'none';
     document.getElementById('category-selector').style.display = 'block';
     document.getElementById('leaderboard-container').style.display = 'block';
+    document.getElementById('cloud-resources').style.display = 'flex';
     loadLeaderboard();
 }
 
@@ -30,6 +31,7 @@ async function startGame() {
     document.getElementById('category-selector').style.display = 'none';
     document.getElementById('game').style.display = 'block';
     document.getElementById('leaderboard-container').style.display = 'block';
+    document.getElementById('cloud-resources').style.display = 'flex';
     score = 0;
     timeLeft = 60;
     currentQuestionIndex = 0;
@@ -150,6 +152,7 @@ async function endGame() {
     document.getElementById('game').style.display = 'none';
     document.getElementById('result').style.display = 'block';
     document.getElementById('leaderboard-container').style.display = 'block';
+    document.getElementById('cloud-resources').style.display = 'flex';
     document.getElementById('final-score').textContent = score;
     await saveScore(score);
     await loadLeaderboard();
@@ -160,6 +163,7 @@ function restartGame() {
     document.getElementById('result').style.display = 'none';
     document.getElementById('name-selector').style.display = 'block';
     document.getElementById('leaderboard-container').style.display = 'block';
+    document.getElementById('cloud-resources').style.display = 'flex';
     document.getElementById('username').value = '';
     username = '';
     loadLeaderboard();
@@ -188,7 +192,10 @@ async function loadLeaderboard() {
         console.log('Puntuaciones cargadas:', scores);
         const leaderboardElements = document.querySelectorAll('#leaderboard');
         leaderboardElements.forEach(leaderboard => {
-            leaderboard.innerHTML = scores.map(s => `<li class="py-1">${decodeHtml(s.username)}: ${s.score} puntos</li>`).join('');
+            leaderboard.innerHTML = scores.map((s, index) => {
+                const isUserScore = s.username === username && s.score === score;
+                return `<li class="${isUserScore ? 'bg-yellow-200 border-2 border-yellow-600 animate-pulse' : index % 2 === 0 ? 'bg-gray-100' : 'bg-white'} p-2 rounded-md shadow-sm">${decodeHtml(s.username)}: ${s.score} puntos</li>`;
+            }).join('');
         });
     } catch (error) {
         console.error('Error cargando ranking:', error);
